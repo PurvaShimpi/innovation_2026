@@ -15,13 +15,28 @@
 
 /* BODY */
 body {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(0,242,255,0.12), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(188,19,254,0.12), transparent 40%),
-    var(--bg-black);
+  background: var(--bg-black);
   color: #fff;
   font-family: 'Rajdhani', sans-serif;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background: radial-gradient(ellipse, 
+    rgba(188,19,254,0.1), 
+    transparent 70%
+  );
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* BACKGROUND GRID */
@@ -29,11 +44,11 @@ body {
   position: fixed;
   inset: 0;
   background:
-    linear-gradient(rgba(0,242,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,242,255,0.05) 1px, transparent 1px);
-  background-size: 90px 90px;
-  animation: gridMove 40s linear infinite;
-  z-index: -1;
+    linear-gradient(rgba(0,242,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,242,255,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridMove 50s linear infinite;
+  z-index: -2;
 }
 
 /* NAVBAR */
@@ -101,72 +116,130 @@ body {
 
 /* TIMELINE */
 .journey-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 40px;
   position: relative;
-}
-
-.journey-vertical::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
-  transform: translateX(-50%);
-  animation: linePulse 3s infinite;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 /* CARD */
 .journey-item {
   position: relative;
-  background: rgba(0,242,255,0.08);
-  border-radius: 14px;
-  padding: 14px 18px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 0 16px rgba(0,242,255,0.25);
-  width: 90%;
-  margin: auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(10, 10, 15, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 24px 28px;
+  border: 1px solid rgba(0,242,255,0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.journey-item:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 0 28px rgba(0,242,255,0.6);
-}
-
+/* Floating glowing node */
 .journey-item::before {
   content: "";
   position: absolute;
+  left: -15px;
   top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
   background: var(--neon-blue);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 12px var(--neon-blue);
+  box-shadow: 
+    0 0 12px rgba(0,242,255,0.9),
+    0 0 24px rgba(0,242,255,0.5),
+    0 0 36px rgba(0,242,255,0.3);
+  animation: nodePulse 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+.journey-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(188,19,254,0.08), 
+    transparent 70%
+  );
+  border-radius: 10px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.journey-item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,242,255,0.4);
+  box-shadow: 
+    0 4px 24px rgba(0,242,255,0.15),
+    0 0 0 1px rgba(0,242,255,0.2) inset;
+}
+
+.journey-item:hover::before {
+  animation: nodePulseIntense 1s ease-in-out infinite;
 }
 
 .year {
   font-family: 'Orbitron';
-  font-size: 1.1rem;
-  color: var(--neon-purple);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--neon-blue);
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 8px rgba(0,242,255,0.6);
+  letter-spacing: 1px;
+}
+
+.journey-item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
 }
 
 /* FINAL */
 .journey-item.highlight {
-  background: linear-gradient(
-    135deg,
-    rgba(0,242,255,0.25),
-    rgba(188,19,254,0.2)
+  border-color: rgba(188,19,254,0.3);
+  background: rgba(15, 10, 20, 0.4);
+  grid-column: 1 / -1;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.journey-item.highlight::before {
+  background: var(--neon-purple);
+  box-shadow: 
+    0 0 16px rgba(188,19,254,1),
+    0 0 28px rgba(188,19,254,0.6),
+    0 0 40px rgba(188,19,254,0.4);
+  animation: nodePulsePurple 2s ease-in-out infinite;
+}
+
+.journey-item.highlight::after {
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(188,19,254,0.15), 
+    transparent 70%
   );
-  box-shadow: 0 0 40px rgba(188,19,254,0.8);
-  animation: destinationPulse 2.8s infinite;
+}
+
+.journey-item.highlight:hover {
+  border-color: rgba(188,19,254,0.5);
+  box-shadow: 
+    0 4px 24px rgba(188,19,254,0.2),
+    0 0 0 1px rgba(188,19,254,0.3) inset;
+}
+
+.journey-item.highlight:hover::before {
+  animation: nodePulsePurpleIntense 1s ease-in-out infinite;
+}
+
+.journey-item.highlight .year {
+  color: var(--neon-purple);
+  text-shadow: 0 0 10px rgba(188,19,254,0.8);
 }
 
 /* ================= HAMBURGER (ONLY ADDITION) ================= */
@@ -213,15 +286,98 @@ body {
 /* ANIMATIONS */
 @keyframes gridMove {
   from { background-position: 0 0; }
-  to { background-position: 900px 900px; }
+  to { background-position: 800px 800px; }
 }
 
-@keyframes linePulse {
-  0%,100% { opacity: 0.4; }
-  50% { opacity: 1; }
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes destinationPulse {
-  0%,100% { box-shadow: 0 0 28px rgba(188,19,254,0.6); }
-  50% { box-shadow: 0 0 48px rgba(188,19,254,1); }
+@keyframes nodePulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 12px rgba(0,242,255,0.9),
+      0 0 24px rgba(0,242,255,0.5),
+      0 0 36px rgba(0,242,255,0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 16px rgba(0,242,255,1),
+      0 0 32px rgba(0,242,255,0.7),
+      0 0 48px rgba(0,242,255,0.5);
+  }
+}
+
+@keyframes nodePulseIntense {
+  0%, 100% {
+    box-shadow: 
+      0 0 16px rgba(0,242,255,1),
+      0 0 32px rgba(0,242,255,0.8),
+      0 0 48px rgba(0,242,255,0.6);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(0,242,255,1),
+      0 0 40px rgba(0,242,255,1),
+      0 0 60px rgba(0,242,255,0.8);
+  }
+}
+
+@keyframes nodePulsePurple {
+  0%, 100% {
+    box-shadow: 
+      0 0 16px rgba(188,19,254,1),
+      0 0 28px rgba(188,19,254,0.6),
+      0 0 40px rgba(188,19,254,0.4);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(188,19,254,1),
+      0 0 36px rgba(188,19,254,0.8),
+      0 0 52px rgba(188,19,254,0.6);
+  }
+}
+
+@keyframes nodePulsePurpleIntense {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(188,19,254,1),
+      0 0 36px rgba(188,19,254,0.8),
+      0 0 52px rgba(188,19,254,0.6);
+  }
+  50% {
+    box-shadow: 
+      0 0 24px rgba(188,19,254,1),
+      0 0 44px rgba(188,19,254,1),
+      0 0 64px rgba(188,19,254,0.8);
+  }
+}
+
+.journey-item:nth-child(1) { animation-delay: 0.05s; }
+.journey-item:nth-child(2) { animation-delay: 0.1s; }
+.journey-item:nth-child(3) { animation-delay: 0.15s; }
+.journey-item:nth-child(4) { animation-delay: 0.2s; }
+.journey-item:nth-child(5) { animation-delay: 0.25s; }
+.journey-item:nth-child(6) { animation-delay: 0.3s; }
+.journey-item:nth-child(7) { animation-delay: 0.35s; }
+.journey-item:nth-child(8) { animation-delay: 0.4s; }
+.journey-item:nth-child(9) { animation-delay: 0.45s; }
+.journey-item:nth-child(10) { animation-delay: 0.5s; }
+.journey-item:nth-child(11) { animation-delay: 0.55s; }
+.journey-item:nth-child(12) { animation-delay: 0.6s; }
+.journey-item:nth-child(13) { animation-delay: 0.65s; }
+
+/* RESPONSIVE: Single column on mobile */
+@media (max-width: 768px) {
+  .journey-vertical {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .journey-item.highlight {
+    grid-column: 1;
+  }
 }

@@ -131,11 +131,47 @@ body {
 .glitch-text {
   font-family: 'Orbitron';
   font-size: clamp(2rem, 10vw, 4.2rem);
+  font-weight: 900;
   letter-spacing: 5px;
   margin-bottom: 0.6rem;
-  text-shadow:
-    2px 2px var(--neon-purple),
-    -2px -2px var(--neon-blue);
+  color: #fff;
+  position: relative;
+  text-shadow: 
+    0 0 10px rgba(0,242,255,0.8),
+    0 0 20px rgba(0,242,255,0.6),
+    0 0 30px rgba(0,242,255,0.4);
+  animation: glitch-main 3s infinite;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.glitch-text::before {
+  color: #ff00ff;
+  z-index: -1;
+  animation: glitch-before 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  text-shadow: 
+    2px 0 rgba(255,0,255,0.8),
+    -2px 0 rgba(0,255,255,0.8);
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch-text::after {
+  color: #00ffff;
+  z-index: -2;
+  animation: glitch-after 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite reverse;
+  text-shadow: 
+    -2px 0 rgba(255,0,255,0.8),
+    2px 0 rgba(0,255,255,0.8);
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
 }
 
 /* DATE BADGE */
@@ -235,6 +271,8 @@ body {
 /* INNOVATION */
 .innovation-section {
   text-align: center;
+  position: relative;
+  padding: 80px 6%;
 }
 
 .innovation-tagline {
@@ -250,36 +288,100 @@ body {
 
 .innovation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 1;
 }
 
 .innovation-card {
-  background: linear-gradient(
-    135deg,
-    rgba(0,242,255,0.12),
-    rgba(0,0,0,0.75)
+  position: relative;
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 32px 24px;
+  border: 2px solid rgba(0,242,255,0.4);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.innovation-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0,242,255,0.6), 
+    transparent
   );
-  border-radius: 16px;
-  padding: 28px 22px;
-  border: 1px solid rgba(0,242,255,0.35);
-  box-shadow: 0 0 25px rgba(0,242,255,0.25);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border-radius: 12px;
+  opacity: 0;
+  animation: borderSweep 3s linear infinite;
+  z-index: -1;
+}
+
+.innovation-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(188,19,254,0.08), 
+    transparent 70%
+  );
+  opacity: 0.4;
+  z-index: -2;
+  border-radius: 12px;
+}
+
+.innovation-card h3 {
+  font-family: 'Orbitron';
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 12px;
+  text-shadow: 0 0 8px rgba(0,242,255,0.5);
+}
+
+.innovation-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
 }
 
 .innovation-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 0 45px rgba(0,242,255,0.8);
+  transform: translateY(-8px);
+  border-color: rgba(0,242,255,0.8);
+  box-shadow: 
+    0 8px 32px rgba(0,242,255,0.2),
+    0 0 0 1px rgba(0,242,255,0.5) inset;
+}
+
+.innovation-card:hover::before {
+  opacity: 1;
+}
+
+.innovation-card:hover h3 {
+  text-shadow: 0 0 12px rgba(0,242,255,0.8);
 }
 
 .innovation-card.highlight {
-  background: linear-gradient(
-    135deg,
-    rgba(188,19,254,0.25),
-    rgba(0,0,0,0.8)
+  border-color: rgba(188,19,254,0.5);
+}
+
+.innovation-card.highlight::after {
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(188,19,254,0.12), 
+    transparent 70%
   );
-  border-color: rgba(188,19,254,0.6);
-  box-shadow: 0 0 45px rgba(188,19,254,0.8);
+  opacity: 0.5;
+}
+
+.innovation-card.highlight:hover {
+  border-color: rgba(188,19,254,0.9);
+  box-shadow: 
+    0 8px 32px rgba(188,19,254,0.25),
+    0 0 0 1px rgba(188,19,254,0.6) inset;
 }
 
 /* ================= FOOTER (STABLE + CLEAN) ================= */
@@ -391,6 +493,7 @@ footer {
   border-radius: 50%;
   color: var(--neon-blue);
   font-size: 1.1rem;
+  text-decoration: none;
   border: 1px solid rgba(0,242,255,0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -511,111 +614,114 @@ footer {
   50% { box-shadow: 0 0 26px rgba(0,242,255,0.9); }
 }
 
+@keyframes glitch-main {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(0,242,255,0.8),
+      0 0 20px rgba(0,242,255,0.6),
+      0 0 30px rgba(0,242,255,0.4);
+  }
+  20% {
+    text-shadow: 
+      0 0 15px rgba(0,242,255,1),
+      0 0 25px rgba(0,242,255,0.7),
+      0 0 35px rgba(0,242,255,0.5);
+  }
+  50% {
+    text-shadow: 
+      0 0 12px rgba(188,19,254,0.8),
+      0 0 22px rgba(188,19,254,0.6),
+      0 0 32px rgba(188,19,254,0.4);
+  }
+  80% {
+    text-shadow: 
+      0 0 18px rgba(0,242,255,0.9),
+      0 0 28px rgba(0,242,255,0.6),
+      0 0 38px rgba(0,242,255,0.3);
+  }
+}
 
-/* ========== INNOVATION – EYE CATCH ANIMS ========== */
+@keyframes glitch-before {
+  0% {
+    transform: translate(0) skew(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  }
+  5% {
+    transform: translate(-8px, -3px) skew(-10deg);
+    clip-path: polygon(0 10%, 100% 5%, 100% 60%, 0 50%);
+  }
+  10% {
+    transform: translate(6px, 4px) skew(8deg);
+    clip-path: polygon(0 20%, 100% 15%, 100% 65%, 0 55%);
+  }
+  15% {
+    transform: translate(-5px, 2px) skew(-5deg);
+    clip-path: polygon(0 5%, 100% 10%, 100% 50%, 0 45%);
+  }
+  20% {
+    transform: translate(0) skew(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  }
+  100% {
+    transform: translate(0) skew(0deg);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  }
+}
+
+@keyframes glitch-after {
+  0% {
+    transform: translate(0) skew(0deg);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  }
+  5% {
+    transform: translate(8px, 3px) skew(12deg);
+    clip-path: polygon(0 45%, 100% 50%, 100% 95%, 0 90%);
+  }
+  10% {
+    transform: translate(-6px, -4px) skew(-9deg);
+    clip-path: polygon(0 35%, 100% 40%, 100% 85%, 0 80%);
+  }
+  15% {
+    transform: translate(5px, -2px) skew(6deg);
+    clip-path: polygon(0 50%, 100% 55%, 100% 100%, 0 95%);
+  }
+  20% {
+    transform: translate(0) skew(0deg);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  }
+  100% {
+    transform: translate(0) skew(0deg);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  }
+}
 
 
-/* Section energy background */
+/* ========== INNOVATION – CYBER NEON GLASS STYLE ========== */
+
+/* Subtle ambient glow behind section */
 .innovation-section::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(0,242,255,0.12), transparent 40%),
-    radial-gradient(circle at 70% 80%, rgba(188,19,254,0.15), transparent 45%);
-  animation: energyShift 8s ease-in-out infinite;
-  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+  background: radial-gradient(ellipse, 
+    rgba(188,19,254,0.08), 
+    transparent 70%
+  );
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* TAGLINE – glitch pop */
-.innovation-tagline {
-  animation: taglinePop 1.4s ease-out both;
-}
-
-/* GRID */
-.innovation-grid {
-  perspective: 1200px;
-}
-
-/* CARD BASE – hidden state */
-.innovation-card {
-  opacity: 0;
-  transform: scale(0.7) translateY(60px) rotateX(25deg);
-  filter: blur(8px);
-  animation: cardReveal 0.9s ease-out forwards;
-  will-change: transform, opacity;
-}
-
-/* STAGGER POP */
-.innovation-card:nth-child(1) { animation-delay: 0.2s; }
-.innovation-card:nth-child(2) { animation-delay: 0.4s; }
-.innovation-card:nth-child(3) { animation-delay: 0.6s; }
-.innovation-card:nth-child(4) { animation-delay: 0.8s; }
-
-/* HOVER – aggressive premium feel */
-.innovation-card:hover {
-  transform: translateY(-18px) scale(1.06) rotateX(0deg);
-  box-shadow:
-    0 0 40px rgba(0,242,255,0.9),
-    0 0 80px rgba(0,242,255,0.4);
-}
-
-/* Highlight card = boss energy */
-.innovation-card.highlight {
-  animation: cardReveal 0.9s ease-out forwards, bossPulse 3.5s infinite;
-}
-
-/* Glow edge on hover */
-.innovation-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid transparent;
-  transition: border 0.3s ease;
-}
-
-.innovation-card:hover::after {
-  border-color: rgba(0,242,255,0.8);
-}
-
-
-
-@keyframes cardReveal {
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0) rotateX(0deg);
-    filter: blur(0);
-  }
-}
-
-@keyframes taglinePop {
+/* Border light sweep animation */
+@keyframes borderSweep {
   0% {
-    opacity: 0;
-    transform: scale(0.8);
-    filter: blur(6px);
+    transform: translateX(-100%) rotate(0deg);
   }
   100% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes energyShift {
-  0%,100% {
-    background-position: 0% 0%, 100% 100%;
-  }
-  50% {
-    background-position: 100% 0%, 0% 100%;
-  }
-}
-
-@keyframes bossPulse {
-  0%,100% {
-    box-shadow: 0 0 35px rgba(188,19,254,0.7);
-  }
-  50% {
-    box-shadow: 0 0 70px rgba(188,19,254,1);
+    transform: translateX(100%) rotate(0deg);
   }
 }

@@ -11,7 +11,7 @@ const events = [
   coord: "Swati Paralkar · 9309513956",
   register: "#",
   rulebook: "#",
-  poster: "assets/MITSUHA.jpg" 
+  poster: "assets/testEvent.png" 
 },
   {
     name:"PRAKALPA",
@@ -19,7 +19,7 @@ const events = [
     desc:"IT innovation challenge.",
     coord:"Pallavi Tekade · 8483934912",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"ABHYUDAYA",
@@ -27,7 +27,7 @@ const events = [
     desc:"Techno-business analytics.",
     coord:"Neeraj Sathawane · 9595497402",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"ELECTRONOVA",
@@ -35,7 +35,7 @@ const events = [
     desc:"Electronics & IoT.",
     coord:"Ajit Tatugade · 8087274140",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"CATRACK",
@@ -43,7 +43,7 @@ const events = [
     desc:"Electrical engineering.",
     coord:"Amruta Uduparkar · 8788799157",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"AUTOMATION ASCENSION 3.0",
@@ -51,7 +51,7 @@ const events = [
     desc:"Automation & robotics.",
     coord:"Ravi Shankar Rai · 8948271201",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"TECHNOXPLOSION",
@@ -59,7 +59,7 @@ const events = [
     desc:"Interdisciplinary engineering.",
     coord:"Amol Patil · 9673971723",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"IDEATHON-2K26",
@@ -67,7 +67,7 @@ const events = [
     desc:"Mechanical ideation.",
     coord:"R.P. Sonawane · 9503305104",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"SUSTAINACAST",
@@ -75,7 +75,7 @@ const events = [
     desc:"Civil sustainability.",
     coord:"Ramatai Pawar · 9307475018",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   
 {
@@ -84,7 +84,7 @@ const events = [
     desc:"MBA startup pitch.",
     coord:"Pramila Parekh · 9890112348",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"TANTRA-UTSAV",
@@ -92,7 +92,7 @@ const events = [
     desc:"Polytechnic tech events.",
     coord:"Mayuri More · 9970897952",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"LIBCAST CHALLENGE",
@@ -100,7 +100,7 @@ const events = [
     desc:"Library innovation challenge.",
     coord:"Library Team",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"PHARMACY IDEATHON",
@@ -108,7 +108,7 @@ const events = [
     desc:"Healthcare innovation.",
     coord:"Trupti Deshpande · 7709184076",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"DIGITAL TEACHING SKILL",
@@ -116,7 +116,7 @@ const events = [
     desc:"Digital pedagogy.",
     coord:"RSCOED Faculty",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"TECHNOTHON",
@@ -124,7 +124,7 @@ const events = [
     desc:"Tech marathon.",
     coord:"Rasika Patil · 9890906515",
     register:"#",
-   poster: "assets/MITSUHA.jpg"  
+   poster: "assets/testEvent.png"  
 }
 ];
 
