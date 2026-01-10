@@ -2,106 +2,70 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>INNOVISION 2026 | Events</title>
-
-    <link rel="stylesheet" href="css/events.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INNOVISION 2026 | Events</title>
+  <link rel="stylesheet" href="css/events.css" />
 </head>
 
 <body>
 
-    <!-- BACKGROUND -->
-    <div class="cyber-grid"></div>
+  <div class="cyber-grid"></div>
 
-    <!-- NAVBAR -->
-    <nav class="cyber-nav">
-        <div class="logo">INNOVISION<span>2026</span></div>
+  <nav class="cyber-nav">
+    <div class="logo">INNOVISION<span>2026</span></div>
 
-        <!-- HAMBURGER (MOBILE) -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
 
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="journey.html">JOURNEY</a>
-            <a href="sponsor.html">SPONSOR</a>
-            <a href="events.html" class="active">EVENTS</a>
-            <a href="gallery.html">GALLERY</a>
-        </div>
-    </nav>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">HOME</a>
+      <a href="journey.html">JOURNEY</a>
+      <a href="#" class="active">EVENTS</a>
+      <a href="gallery.html">GALLERY</a>
+    </div>
+  </nav>
 
-    <!-- PAGE -->
-    <section class="events-page">
+  <section class="events-page">
 
-        <h1 class="page-title">EVENTS @ INNOVISION 2026</h1>
-        <p class="page-subtitle">Explore technical domains & flagship competitions</p>
+    <h1 class="page-title">EVENTS @ INNOVISION 2026</h1>
+    <p class="page-subtitle">Explore all events & competitions</p>
 
-        <!-- TECHNICAL SECTORS -->
-        <h2 class="section-title">TECHNICAL SECTORS</h2>
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search events..." />
 
-        <div class="event-grid">
-            <!-- Engineering Departments -->
-            <div class="event-tile glass"><span>AVINYA-2K26</span><small>Computer</small></div>
-            <div class="event-tile glass"><span>PRAKALPA</span><small>IT</small></div>
-            <div class="event-tile glass"><span>ABHYUDAYA</span><small>CSBS</small></div>
-            <div class="event-tile glass"><span>ELECTRONOVA</span><small>E&TC</small></div>
-            <div class="event-tile glass"><span>CATRACK</span><small>Electrical</small></div>
-            <div class="event-tile glass"><span>AUTOMATION ASCENSION 3.0</span><small>A&R</small></div>
-            <div class="event-tile glass"><span>TECHNOXPLOSION</span><small>Engg. Sci & Humanities</small></div>
-            <div class="event-tile glass"><span>IDEATHON-2K26</span><small>Mechanical</small></div>
-            <div class="event-tile glass"><span>SUSTAINACAST</span><small>Civil</small></div>
-            <div class="event-tile glass"><span>SHARK TANK</span><small>MBA</small></div>
+      <div class="filter-tabs">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="RSCOE">RSCOE</button>
+        <button data-filter="Polytechnic">Polytechnic</button>
+        <button data-filter="Other">Other</button>
+      </div>
+    </div>
 
-            <!-- Newly Added Institutions / Sections -->
-            <div class="event-tile glass"><span>TANTRA-UTSAV</span><small>Polytechnic</small></div>
-            <div class="event-tile glass"><span>LIBCAST CHALLENGE</span><small>Jaywant Library</small></div>
-            <div class="event-tile glass"><span>PHARMACY IDEATHON</span><small>Pharmacy</small></div>
-            <div class="event-tile glass"><span>DIGITAL TEACHING SKILL</span><small>RSCOED (B.Ed)</small></div>
-            <div class="event-tile glass"><span>TECHNOTHON</span><small>JIMS</small></div>
-        </div>
+    <div class="events-grid" id="eventsGrid"></div>
 
-        <!-- FLAGSHIP EVENTS -->
-        <h2 class="section-title">FLAGSHIP EVENTS</h2>
+  </section>
 
-        <div class="events-grid">
+  <!-- MODAL -->
+  <div class="event-modal" id="eventModal">
+    <div class="modal-box">
+      <span class="close" id="closeModal">×</span>
 
-            <div class="event-card">
-                <div class="poster">A3 POSTER HERE</div>
-                <h3>Hackathon</h3>
-                <p class="short-info">24-hour innovation challenge</p>
-            </div>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-dept" id="modalDept"></p>
+      <p id="modalDesc"></p>
 
-            <div class="event-card">
-                <div class="poster">A3 POSTER HERE</div>
-                <h3>Project Expo</h3>
-                <p class="short-info">Showcase real-world solutions</p>
-            </div>
+      <div class="modal-info">
+        <strong>Coordinator</strong>
+        <p id="modalCoord"></p>
+      </div>
 
-            <div class="event-card">
-                <div class="poster">A3 POSTER HERE</div>
-                <h3>Robo Wars</h3>
-                <p class="short-info">Battle of intelligent machines</p>
-            </div>
+      <div class="modal-actions" id="modalActions"></div>
+    </div>
+  </div>
 
-        </div>
-
-    </section>
-
-    <!-- JS -->
-    <script>
-        const hamburger = document.getElementById("hamburger");
-        const navLinks = document.getElementById("navLinks");
-
-        hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("open");
-        });
-    </script>
-
+  <script src="js/events.js"></script>
 </body>
 
 </html>
