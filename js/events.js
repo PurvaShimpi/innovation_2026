@@ -5,7 +5,7 @@ hamburger.onclick = () => navLinks.classList.toggle("open");
 const events = [
   {
     
-  name: "AVINYA-2K26 ( CS Dept.)",
+  name: "AVINYA-2026 ( CS Dept.)",
   inst: "RSCOE",
   desc: "Coding, AI & system design. lorem *456 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   coord: "Swati Paralkar · 9309513956",
@@ -62,7 +62,7 @@ const events = [
    poster: "assets/testEvent.png"  
 },
   {
-    name:"IDEATHON-2K26",
+    name:"IDEATHON-2026",
     inst:"RSCOE",
     desc:"Mechanical ideation.",
     coord:"R.P. Sonawane · 9503305104",
