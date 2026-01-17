@@ -704,11 +704,14 @@ body::before {
 }
 
 .modal-banner img {
-  max-width: 250px;
+  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,242,255,0.3);
-  border: 2px solid rgba(0,242,255,0.3);
+  box-shadow: 
+    0 15px 40px rgba(0,242,255,0.4),
+    0 0 0 2px rgba(0,242,255,0.4);
+  display: block;
 }
 
 .modal-title {
