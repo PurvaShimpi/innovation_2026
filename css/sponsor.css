@@ -480,6 +480,17 @@ body::before {
   margin-top: 20px;
 }
 
+/* Sponsor Amount */
+.sponsor-amount {
+  font-family: 'Orbitron';
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-color);
+  margin-top: 8px;
+  text-shadow: 0 0 8px rgba(255,215,0,0.5);
+  letter-spacing: 1px;
+}
+
 /* Gold Cards - Medium text with gold color */
 .gold-card h3 {
   font-size: 0.95rem;
