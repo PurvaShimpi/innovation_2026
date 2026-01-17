@@ -89,12 +89,11 @@
     <h2 class="sponsor-title gold">GOLD SPONSORS</h2>
 
     <div class="sponsor-row three-col">
-      <div class="sponsor-card gold-card" data-aos="fade-up">
+      <div class="sponsor-card gold-card" data-aos="fade-up" onclick="openSponsorModal('swara')" style="cursor: pointer;">
         <div class="logo-box">
             <img src="assets/swara.png" alt="SWARA SPORTS ARENA">
           </div>          
         <h3>SWARA SPORTS ARENA</h3>
-        <p class="sponsor-amount">₹50,000</p>
       </div>
 
       <div class="sponsor-card gold-card" data-aos="fade-up">
@@ -141,9 +140,57 @@
     </div>
   </section>
 
+  <!-- SPONSOR MODAL -->
+  <div id="sponsorModal" class="sponsor-modal">
+    <div class="sponsor-modal-content">
+      <span class="modal-close" onclick="closeSponsorModal()">&times;</span>
+      <div id="modalBody">
+        <!-- Dynamic content will be inserted here -->
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 900, once: true });
+
+    // Sponsor modal functionality
+    function openSponsorModal(sponsor) {
+      const modal = document.getElementById('sponsorModal');
+      const modalBody = document.getElementById('modalBody');
+      
+      if (sponsor === 'swara') {
+        modalBody.innerHTML = `
+          <div class="modal-banner">
+            <img src="assets/swara_banner.png" alt="SWARA SPORTS ARENA">
+          </div>
+          <h2 class="modal-title">SWARA SPORTS ARENA</h2>
+          <p class="modal-description">
+            Premium Badminton Court in Hinjewadi<br>
+            Your destination for sports excellence
+          </p>
+          <div class="modal-buttons">
+            <a href="https://maps.app.goo.gl/XUjtRFPd6SVgBHiH7?g_st=iw" target="_blank" class="modal-btn">
+              <i class="fa fa-map-marker"></i> Visit Location
+            </a>
+          </div>
+        `;
+      }
+      
+      modal.style.display = 'flex';
+    }
+
+    function closeSponsorModal() {
+      document.getElementById('sponsorModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('sponsorModal');
+      if (event.target === modal) {
+        closeSponsorModal();
+      }
+    }
   </script>
 
 </body>
