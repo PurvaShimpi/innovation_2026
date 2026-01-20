@@ -52,7 +52,7 @@ const events = [
     desc:"Automation & robotics.",
     coord:"Ravi Shankar Rai · 8948271201",
     register:"#",
-   poster: "assets/eventsImages/automationAscension.png"  
+   poster: "assets/eventsImages/automationascension.png"  
 },
   {
     name:"TECHNOXPLOSION",
@@ -60,7 +60,7 @@ const events = [
     desc:"Interdisciplinary engineering.",
     coord:"Amol Patil · 9673971723",
     register:"#",
-   poster: "assets/coming_soon.webp"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"IDEATHON-2026",
@@ -68,7 +68,7 @@ const events = [
     desc:"Mechanical ideation.",
     coord:"R.P. Sonawane · 9503305104",
     register:"#",
-   poster: "assets/coming_soon.webp"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"SUSTAINACAST",
@@ -85,7 +85,7 @@ const events = [
     desc:"MBA startup pitch.",
     coord:"Pramila Parekh · 9890112348",
     register:"#",
-   poster: "assets/coming_soon.webp"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"TANTRA-UTSAV",
@@ -93,7 +93,7 @@ const events = [
     desc:"Polytechnic tech events.",
     coord:"Mayuri More · 9970897952",
     register:"#",
-   poster: "assets/eventsImages/tantraUtsav.jpeg"  
+   poster: "assets/eventsImages/tantrautsav.jpeg"  
 },
   {
     name:"LIBCAST CHALLENGE",
@@ -109,7 +109,7 @@ const events = [
     desc:"Healthcare innovation.",
     coord:"Trupti Deshpande · 7709184076",
     register:"#",
-   poster: "assets/coming_soon.webp"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"DIGITAL TEACHING SKILL",
@@ -117,7 +117,7 @@ const events = [
     desc:"Digital pedagogy.",
     coord:"RSCOED Faculty",
     register:"#",
-   poster: "assets/coming_soon.webp"  
+   poster: "assets/testEvent.png"  
 },
   {
     name:"TECHNOTHON",
@@ -219,3 +219,4 @@ closeModal.onclick = () => {
 
 
 render();
+
