@@ -25,6 +25,64 @@ body {
   overflow-x: hidden;
 }
 
+/* CUSTOM SCROLLBAR */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-blue) rgba(10, 10, 15, 0.8);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 8, 0.9),
+    rgba(10, 10, 15, 0.8)
+  );
+  border-radius: 10px;
+  border: 1px solid rgba(0, 242, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--neon-blue),
+    var(--neon-purple)
+  );
+  border-radius: 10px;
+  border: 2px solid rgba(5, 5, 8, 0.5);
+  box-shadow: 
+    0 0 10px rgba(0, 242, 255, 0.5),
+    inset 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 242, 255, 0.9),
+    rgba(188, 19, 254, 0.9)
+  );
+  box-shadow: 
+    0 0 15px rgba(0, 242, 255, 0.8),
+    inset 0 0 15px rgba(0, 242, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(
+    180deg,
+    var(--neon-blue),
+    var(--neon-purple)
+  );
+  box-shadow: 
+    0 0 20px rgba(0, 242, 255, 1),
+    inset 0 0 20px rgba(0, 242, 255, 0.6);
+}
+
 /* CYBER GRID */
 .cyber-grid {
   position: fixed;
@@ -172,7 +230,8 @@ body {
 }
 
 .hero-content {
-  max-width: 900px;
+  max-width: 1400px;
+  width: 100%;
 }
 
 .college-name {
@@ -182,6 +241,120 @@ body {
   color: var(--neon-blue);
   margin-bottom: 0.6rem;
   animation: neonBreathe 3s infinite;
+}
+
+/* Title with Sponsors Wrapper */
+.title-sponsor-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 60px);
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Inline Sponsors */
+.inline-sponsor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 15, 0.6),
+    rgba(5, 5, 8, 0.8)
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  transition: all 0.4s ease;
+  min-width: 140px;
+}
+
+.inline-sponsor::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  border-radius: 12px;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(6px);
+  transition: opacity 0.4s ease;
+}
+
+.inline-sponsor:hover::before {
+  opacity: 0.6;
+}
+
+.inline-sponsor:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.inline-sponsor-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  transition: all 0.3s ease;
+}
+
+.inline-sponsor:hover .inline-sponsor-img {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+  transform: scale(1.1);
+}
+
+.inline-sponsor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sponsor-badge {
+  font-family: 'Orbitron';
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.inline-sponsor-name {
+  font-family: 'Orbitron';
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Remove Title Sponsor Specific Colors */
+.title-sponsor-inline {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.title-sponsor-inline::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+}
+
+.title-sponsor-inline:hover {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Remove Co-Sponsor Specific Colors */
+.co-sponsor-inline {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.co-sponsor-inline::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
 }
 
 .glitch-text {
@@ -260,9 +433,9 @@ body {
 .date-badge {
   display: inline-block;
   margin: 10px auto 14px;
-  padding: 10px 22px;
+  padding: 18px 22px;
   font-family: 'Orbitron';
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 1.5px;
   color: var(--neon-blue);
   background: rgba(0,242,255,0.1);
@@ -272,30 +445,151 @@ body {
   animation: badgePulse 3s infinite;
 }
 
-/* HERO BUTTONS */
-.hero-btns {
+/* SPONSOR CAROUSEL */
+.sponsor-carousel-container {
+  margin: 35px auto 0;
+  width: 100%;
+  max-width: 1100px;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+}
+
+.sponsor-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}
+
+.sponsor-track {
   display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 22px;
+  gap: 40px;
+  animation: scrollSponsor 25s linear infinite;
+  width: max-content;
 }
 
-.cyber-btn {
-  padding: 12px 18px;
+.sponsor-track:hover {
+  animation-play-state: paused;
+}
+
+.sponsor-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: 'Orbitron';
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  text-decoration: none;
-  color: var(--neon-blue);
-  background: rgba(0,242,255,0.08);
-  border-radius: 6px;
-  transition: transform 0.25s, box-shadow 0.25s;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  padding: 14px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
-.cyber-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0,242,255,0.6);
+.sponsor-carousel-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.sponsor-carousel-name {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.sponsor-item.gold {
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 0.1),
+    inset 0 0 20px rgba(255, 215, 0, 0.05);
+}
+
+.sponsor-item.gold .sponsor-carousel-logo {
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
+}
+
+.sponsor-item.gold .sponsor-carousel-name {
+  color: rgba(255, 215, 0, 0.9);
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+.sponsor-item.gold:hover {
+  transform: translateY(-3px);
+  border: 3px solid rgba(255, 215, 0, 0.7);
+  box-shadow: 
+    0 0 30px rgba(255, 215, 0, 0.4),
+    0 8px 20px rgba(255, 215, 0, 0.25),
+    inset 0 0 35px rgba(255, 215, 0, 0.15);
+}
+
+.sponsor-item.gold:hover .sponsor-carousel-logo {
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+  transform: scale(1.1);
+}
+
+.sponsor-item.silver {
+  border: 3px solid rgba(192, 192, 192, 0.3);
+  box-shadow: 
+    0 0 15px rgba(192, 192, 192, 0.1),
+    inset 0 0 20px rgba(192, 192, 192, 0.05);
+}
+
+.sponsor-item.silver .sponsor-carousel-logo {
+  filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.4));
+}
+
+.sponsor-item.silver .sponsor-carousel-name {
+  color: rgba(192, 192, 192, 0.9);
+  text-shadow: 0 0 12px rgba(192, 192, 192, 0.4);
+}
+
+.sponsor-item.silver:hover {
+  transform: translateY(-3px);
+  border: 3px solid rgba(192, 192, 192, 0.7);
+  box-shadow: 
+    0 0 30px rgba(192, 192, 192, 0.4),
+    0 8px 20px rgba(192, 192, 192, 0.25),
+    inset 0 0 35px rgba(192, 192, 192, 0.15);
+}
+
+.sponsor-item.silver:hover .sponsor-carousel-logo {
+  filter: drop-shadow(0 0 15px rgba(192, 192, 192, 0.6));
+  transform: scale(1.1);
+}
+
+@keyframes scrollSponsor {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* CONTENT */
@@ -628,6 +922,72 @@ footer {
   .footer .mid {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  /* Sponsor Carousel Mobile */
+  .sponsor-carousel-container {
+    margin-top: 25px;
+    padding: 15px 0;
+  }
+
+  .sponsor-item {
+    font-size: 0.85rem;
+    padding: 10px 18px;
+  }
+
+  /* Inline Sponsors Mobile */
+  /* Mobile Order: Sponsors -> College Name -> Title */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title-sponsor-wrapper {
+    order: 1;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .inline-sponsor {
+    min-width: 120px;
+    padding: 14px 18px;
+  }
+
+  .inline-sponsor-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .sponsor-badge {
+    font-size: 0.6rem;
+  }
+
+  .inline-sponsor-name {
+    font-size: 0.75rem;
+  }
+
+  .college-name {
+    order: 2;
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+
+  .glitch-text {
+    order: 3;
+    margin-bottom: 15px;
+  }
+
+  .hero-quote {
+    order: 4;
+  }
+
+  .date-badge {
+    order: 5;
+  }
+
+  .sponsor-carousel-container {
+    order: 6;
   }
 }
 
