@@ -145,7 +145,7 @@ const events = [
   },
   {
     name: "TECHNOMANTHAN",
-    inst: "Other",
+    inst: "RSCOE",
     desc: "National-level problem solving contest.",
     coord: "Suraj Gangawane · 9130290541",
     register: "https://www.atincampus.co.in/event-list",
@@ -276,5 +276,6 @@ document.addEventListener("keydown", (e) => {
 });
 
 render();
+
 
 
