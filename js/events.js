@@ -24,7 +24,7 @@ const events = [
     coord: "Pallavi Tekade · 8483934912",
     rulebook:"#",
     register: "https://www.atincampus.co.in/event-list",
-    poster: "assets/coming_soon.webp"
+    poster: "assets/eventsImages/prakalpa.jpeg"
   },
   {
     name: "ABHYUDAYA",
@@ -276,4 +276,5 @@ document.addEventListener("keydown", (e) => {
 });
 
 render();
+
 
