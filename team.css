@@ -1,0 +1,321 @@
+/* ================= TEAM PAGE ================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;600;700&display=swap');
+
+:root {
+  --neon-blue: #00f2ff;
+  --neon-purple: #bc13fe;
+  --bg-black: #050508;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,242,255,0.12), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(188,19,254,0.12), transparent 40%),
+    var(--bg-black);
+  animation: energyPulse 14s ease-in-out infinite;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.team-hero {
+  text-align: center;
+  padding: 120px 20px 60px;
+}
+
+.team-hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 900;
+  color: var(--neon-blue);
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  text-shadow:
+    0 0 10px rgba(0,242,255,0.6),
+    0 0 20px rgba(0,242,255,0.3),
+    0 0 30px rgba(0,242,255,0.1);
+  animation: neonBreathe 3s infinite;
+}
+
+.team-hero p {
+  margin-top: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+}
+
+/* TEAM GRID */
+.team-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+  padding: 80px 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* TABS CONTAINER - POSITIONED ON RIGHT */
+.team-tabs {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 100;
+}
+
+.team-tabs button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(0,242,255,0.4);
+  background: rgba(0,242,255,0.08);
+  color: rgba(255,255,255,0.8);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  writing-mode: horizontal-tb;
+}
+
+.team-tabs button:hover {
+  background: rgba(0,242,255,0.12);
+  border-color: rgba(0,242,255,0.6);
+  color: var(--neon-blue);
+  box-shadow: 0 0 12px rgba(0,242,255,0.25);
+}
+
+.team-tabs button.active {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border-color: transparent;
+  color: var(--bg-black);
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(0,242,255,0.6);
+}
+
+/* CARD */
+.team-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(10, 10, 15, 0.6), rgba(5, 5, 8, 0.8));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1.5px solid rgba(0,242,255,0.4);
+  box-shadow: 
+    0 8px 32px rgba(0,242,255,0.15),
+    inset 0 0 20px rgba(0,242,255,0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 70%,
+    rgba(0,242,255,0.4) 80%,
+    rgba(0,242,255,0.7) 85%,
+    rgba(0,242,255,0.4) 90%,
+    transparent 100%
+  );
+  border-radius: 16px;
+  opacity: 0;
+  animation: borderRotate 4s linear infinite;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.team-card:hover::before {
+  opacity: 1;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderRotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* IMAGE */
+.team-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--neon-blue);
+  box-shadow: 0 0 25px rgba(0,242,255,0.5);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover img {
+  box-shadow: 0 0 35px rgba(0,242,255,0.8);
+  border-color: var(--neon-purple);
+}
+
+/* TEXT */
+.team-card h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(0,242,255,0.3);
+}
+
+.team-card span {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  color: var(--neon-blue);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+/* HOVER */
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(0,242,255,0.7);
+  box-shadow:
+    0 16px 48px rgba(0,242,255,0.3),
+    inset 0 0 20px rgba(0,242,255,0.1);
+}
+
+/* ANIMATIONS */
+@keyframes glowFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes energyPulse {
+  0%, 100% {
+    background-position: 20% 20%, 80% 80%;
+  }
+  50% {
+    background-position: 30% 30%, 70% 70%;
+  }
+}
+
+@keyframes neonBreathe {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(0,242,255,0.6),
+      0 0 20px rgba(0,242,255,0.3),
+      0 0 30px rgba(0,242,255,0.1);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(0,242,255,0.8),
+      0 0 30px rgba(0,242,255,0.5),
+      0 0 40px rgba(0,242,255,0.3);
+  }
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 80px;
+  border-top: 1px solid rgba(0,242,255,0.2);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .team-tabs {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    margin: 40px 0;
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+
+  .team-tabs button {
+    padding: 10px 18px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-section {
+    padding: 60px 4%;
+    gap: 30px;
+  }
+
+  .team-tabs {
+    margin: 30px 0;
+    gap: 10px;
+  }
+
+  .team-tabs button {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
+
+  .team-card {
+    padding: 24px 16px;
+  }
+
+  .team-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .team-card h3 {
+    font-size: 1rem;
+  }
+
+  .team-card span {
+    font-size: 0.8rem;
+  }
+
+  .team-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-section {
+    padding: 40px 3%;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .team-tabs {
+    margin: 20px 0;
+    gap: 8px;
+  }
+
+  .team-tabs button {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  .team-hero {
+    padding: 80px 16px 40px;
+  }
+
+  .team-hero h1 {
+    font-size: 1.5rem;
+  }
+}
