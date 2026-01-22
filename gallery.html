@@ -36,7 +36,6 @@
   <nav class="cyber-nav">
     <div class="logo">INNOVISION<span>2026</span></div>
 
-    <!-- HAMBURGER -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -47,10 +46,12 @@
       <a href="index.html">HOME</a>
       <a href="index.html#about">ABOUT</a>
       <a href="journey.html">JOURNEY</a>
+      <a href="sponsor.html">SPONSOR</a>
       <a href="events.html">EVENTS</a>
-      <a href="gallery.html" class="active">GALLERY</a>
+      <a href="gallery.html">GALLERY</a>
     </div>
   </nav>
+
 
   <!-- GALLERY -->
   <section class="content-section gallery-section">
@@ -81,11 +82,22 @@
   <script>
     AOS.init({ duration: 900, once: true });
 
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
+  /* NAVBAR TOGGLE */
+
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  /* CLOSE NAV ON LINK CLICK (VERY IMPORTANT) */
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
     });
+  });
+
 
     /* ===== GALLERY ARRAY (ADD YOUR IMAGES HERE) ===== */
 const galleryImages = [

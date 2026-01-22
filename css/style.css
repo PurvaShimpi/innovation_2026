@@ -224,7 +224,7 @@ body {
   min-height: 70vh;
   padding: 110px 6% 40px;
   display: flex;
-  align-items: center;
+  align-items: flex;
   justify-content: center;
   text-align: center;
 }
@@ -1018,9 +1018,9 @@ footer {
     padding: 10px 18px;
   }
 
-  /* Inline Sponsors Mobile */
+  /* Inline Sponsors Mobile
   /* Mobile Order: Sponsors -> College Name -> Title */
-  .hero-content {
+ /* .hero-content {
     display: flex;
     flex-direction: column;
   }
@@ -1072,8 +1072,8 @@ footer {
   .sponsor-carousel-container {
     order: 6;
   }
+ */
 }
-
 /* DESKTOP ABOUT FIX */
 @media (min-width: 769px) {
   .mission-container {
@@ -1391,10 +1391,69 @@ footer {
 @media (max-width: 768px) {
   .event-grid-container {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .event-terminal {
+    padding: 14px 8px;
+  }
+
+  .event-name {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .event-code {
+    font-size: 0.55rem;
+    text-align: center;
   }
 }
 
 @keyframes pulse {
   from { opacity: 1; transform: scale(1); }
   to { opacity: 0.4; transform: scale(1.2); }
+}
+
+/* FIX: Hero collapsing on mobile */
+.hero-section {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+    padding-top: 120px; /* clears fixed navbar */
+    padding-bottom: 40px;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+  }
+}
+/* ===== FIX: HERO HEIGHT COLLAPSING ===== */
+.hero-section {
+  min-height: 100vh;          /* ensures hero never collapses */
+  position: relative;
+  z-index: 2;
+}
+/* ===== FIX: EVENT DASHBOARD VISIBILITY ===== */
+.hero-event-dashboard {
+  margin-top: 60px;
+  position: relative;
+  z-index: 3;
+}
+/* ===== MOBILE HERO FIX ===== */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+    padding-top: 130px;   /* clears fixed navbar */
+    padding-bottom: 60px;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+  }
 }
