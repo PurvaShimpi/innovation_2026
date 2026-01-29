@@ -14,7 +14,7 @@ const events = [
     desc: "Coding, AI & system design.",
     coord: "Swati Paralkar · 9309513956",
     register: "https://www.atincampus.co.in/event-details/avinya-4-0-cs-dept",
-    rulebook: "https://drive.google.com/file/d/1evJy_VAnULUf1hZCYH3P6qKRYhbAky9X/view",
+    rulebook: "https://drive.google.com/file/d/1gmy9QGV25F3vE4b8LglyPpWeB21IwU_G/view?usp=drivesdk",
     poster: "assets/eventsImages/avinya.jpeg"
   },
   {
@@ -285,6 +285,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 render();
+
 
 
 
