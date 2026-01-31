@@ -297,8 +297,8 @@ body {
 }
 
 .inline-sponsor-img {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
   transition: all 0.3s ease;
@@ -313,7 +313,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .sponsor-badge {
